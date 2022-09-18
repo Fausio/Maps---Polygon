@@ -1,0 +1,61 @@
+﻿@{  
+    ViewBag.Title = "Satyaprakash Google Map Polygon";  
+}  
+  
+<title>@ViewBag.Title</title>  
+  
+<h2 style="background-color: Yellow;color: Blue; text-align: center; font-style: oblique">Satyaprakash's Google Map Polygon Using MVC and BOOTSTRAP</h2>  
+<fieldset>  
+    <legend style="font-family: Arial Black; color: blue; font-size: large;">Check Area Occupied By 3 Cities Using Google Map Polygon</legend>  
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+  
+    <div id="map" style="width:100%;height:500px"></div>  
+    <script>  
+        function myMap() {  
+            var Bhubaneswar = new google.maps.LatLng(20.296100, 85.824500);  
+            var Hyderabad = new google.maps.LatLng(17.3850, 78.4867);  
+            var Bangalore = new google.maps.LatLng(12.9716, 77.5946);  
+  
+            var mapCanvas = document.getElementById("map");  
+            var mapOptions = { center: Hyderabad, zoom: 6 };  
+            var map = new google.maps.Map(mapCanvas, mapOptions);  
+  
+            var flightPath = new google.maps.Polygon({  
+                path: [Bhubaneswar, Hyderabad, Bangalore],  
+                strokeColor: "Green",  
+                strokeOpacity: 0.8,  
+                strokeWeight: 2,  
+                fillColor: "Yellow",  
+                fillOpacity: 0.4  
+            });  
+  
+            var marker1 = new google.maps.Marker({  
+                position: Bhubaneswar,  
+                animation: google.maps.Animation.BOUNCE //BOUNCE ,DROP , lo , no  
+            });  
+            var marker2 = new google.maps.Marker({  
+                position: Hyderabad,  
+                animation: google.maps.Animation.BOUNCE //BOUNCE ,DROP , lo , no  
+            });  
+            var marker3 = new google.maps.Marker({  
+                position: Bangalore,  
+                animation: google.maps.Animation.BOUNCE //BOUNCE ,DROP , lo , no  
+            });  
+  
+            flightPath.setMap(map);  
+            marker1.setMap(map);  
+            marker2.setMap(map);  
+            marker3.setMap(map);  
+        }  
+    </script>  
+  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkVZYQFe4YYva_g5ulymGDt9EBoVjjZJ8&callback=myMap"></script>  
+  
+</fieldset>  
+<footer>  
+    <p style="background-color: Yellow; font-weight: bold; color:blue; text-align: center; font-style: oblique">© @DateTime.Now.ToLocalTime()</p> @*Add Date Time*@  
+</footer> 
